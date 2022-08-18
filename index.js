@@ -8,7 +8,7 @@ require('dotenv').config();
 const chalk=require("chalk");
 const {Player}=require("discord-player");
 require("discord-player/smoothVolume");
-require("@discord-player/extractor")
+require("@discord-player/extractor");
 
 const intents=new Intents();
 intents.add(
@@ -21,7 +21,7 @@ const client=new Client({intents, partials: ['MESSAGE', 'REACTION'], allowedMent
 
 const player=new Player(client);
 
-player.on("trackStart", (queue, track) => queue.metadata.channel?queue.metadata.channel.send({
+player.on("trackStart", (queue, track) => queue.metadata.channel? queue.metadata.channel.send({
   embeds: [{
     title: `Now playing:`,
     fields: [{
@@ -48,7 +48,7 @@ player.on("trackStart", (queue, track) => queue.metadata.channel?queue.metadata.
 }):"");
 
 client.slash=new Collection();
-client.player = player;
+client.player=player;
 
 const cmds=fs.readdirSync('./src/cmds').filter((file) => file.endsWith('.js'));
 const commands=[];
@@ -58,7 +58,7 @@ for (const file of cmds) {
   client.slash.set(command.data.name, command);
 }
 
-const rest=new REST({version: "9"}).setToken(process.env.DISCORD_TOKEN);
+const rest=new REST({version: "9"}).setToken(process.env.TOKEN);
 
 (async () => {
   try {
