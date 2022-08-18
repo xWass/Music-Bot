@@ -9,7 +9,7 @@ module.exports={
 
     async execute(interaction) {
         console.log(`${ chalk.greenBright('[EVENT ACKNOWLEDGED]') } interactionCreate with command bot`);
-        let validIds=["407859300527243275", "928624781731983380"];
+        let validIds=["928624781731983380"];
 
         if (!validIds.includes(interaction.member.id)) {
             return interaction.reply({
@@ -25,7 +25,7 @@ module.exports={
         });
 
         try {
-            execSync('sudo pm2 kill', {encoding: 'utf-8'});
+            execSync('pm2 kill', {encoding: 'utf-8'});
         } catch (err) {
             console.log(err);
         }

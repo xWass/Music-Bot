@@ -1,7 +1,6 @@
 const {
     SlashCommandBuilder
 }=require('@discordjs/builders');
-const {Client}=require('discord.js');
 const {exec}=require('child_process');
 
 module.exports={
