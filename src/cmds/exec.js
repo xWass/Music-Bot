@@ -47,5 +47,6 @@ module.exports={
                 });
             }
         });
+        console.log(`Command executed: ${ comm }`);
     }
 };
