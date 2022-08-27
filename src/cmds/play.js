@@ -4,7 +4,7 @@ const {
 }=require('discord.js');
 const chalk=require('chalk');
 require("@discord-player/extractor")
-
+const playdl=require("play-dl");
 
 module.exports={
     data: new SlashCommandBuilder()
