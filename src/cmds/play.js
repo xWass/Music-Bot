@@ -39,7 +39,24 @@ module.exports={
                 channel: interaction.channel
             },
             spotifyBridge: true,
+            async onBeforeCreateStream(track, source, _queue) {
+                if (source==="youtube") {
+                    return (await playdl.stream(track.url, {discordPlayerCompatibility: true})).stream;
+                }
+            }
         });
+        try {
+            if (!queue.connection) await queue.connect(interaction.member.voice.channel);
+        } catch {
+            queue.destroy();
+            return await interaction.reply({
+                embeds: [{
+                    title: "I could not join your voice channel!",
+                    color: 0xFF0000
+                }],
+                ephemeral: true
+            });
+        }
         try {
             if (!queue.connection) await queue.connect(interaction.member.voice.channel);
         } catch {
